@@ -43,7 +43,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
 </ul>
 
         </div>
@@ -89,8 +89,7 @@
 <span class="kn">import</span> <span class="nn">cv2</span>
 
 <span class="kn">from</span> <span class="nn">.ColorChannelVisualizer</span> <span class="kn">import</span> <span class="n">ColorChannelVisualizer</span>
-<span class="kn">from</span> <span class="nn">.ColorGradientVisualizer</span> <span class="kn">import</span> <span class="n">ColorGradientVisualizer</span>
-<span class="kn">from</span> <span class="nn">.GrayGradientVisualizer</span> <span class="kn">import</span> <span class="n">GrayGradientVisualizer</span>
+<span class="kn">from</span> <span class="nn">.GradientVisualizer</span> <span class="kn">import</span> <span class="n">ColorGradientVisualizer</span><span class="p">,</span> <span class="n">GrayGradientVisualizer</span>
 <span class="kn">from</span> <span class="nn">.HoGVisualizer</span> <span class="kn">import</span> <span class="n">HoGVisualizer</span>
 <span class="kn">from</span> <span class="nn">.KeypointVisualizer</span> <span class="kn">import</span> <span class="n">KeypointVisualizer</span>
 <span class="kn">from</span> <span class="nn">.LBPVisualizer</span> <span class="kn">import</span> <span class="n">LBPVisualizer</span>
@@ -98,7 +97,7 @@
 
 
 <div class="viewcode-block" id="Visualizer">
-<a class="viewcode-back" href="../../api.html#imgvisfeat.Visualizer.Visualizer">[docs]</a>
+<a class="viewcode-back" href="../../api/visualizers.html#imgvisfeat.Visualizer.Visualizer">[docs]</a>
 <span class="k">class</span> <span class="nc">Visualizer</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for visualizing images.</span>
 
@@ -114,7 +113,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Visualizer.__init__">
-<a class="viewcode-back" href="../../api.html#imgvisfeat.Visualizer.Visualizer.__init__">[docs]</a>
+<a class="viewcode-back" href="../../api/visualizers.html#imgvisfeat.Visualizer.Visualizer.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the Visualizer.</span>
 
@@ -134,7 +133,7 @@
 
 
 <div class="viewcode-block" id="Visualizer.visualize">
-<a class="viewcode-back" href="../../api.html#imgvisfeat.Visualizer.Visualizer.visualize">[docs]</a>
+<a class="viewcode-back" href="../../api/visualizers.html#imgvisfeat.Visualizer.Visualizer.visualize">[docs]</a>
     <span class="k">def</span> <span class="nf">visualize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Visualize the image.</span>
 
@@ -212,7 +211,7 @@
 
 
 <div class="viewcode-block" id="Visualizer.check_image_assertions">
-<a class="viewcode-back" href="../../api.html#imgvisfeat.Visualizer.Visualizer.check_image_assertions">[docs]</a>
+<a class="viewcode-back" href="../../api/visualizers.html#imgvisfeat.Visualizer.Visualizer.check_image_assertions">[docs]</a>
     <span class="k">def</span> <span class="nf">check_image_assertions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the image path is valid.</span>
 

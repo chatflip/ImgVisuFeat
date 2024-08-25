@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Classes &mdash; ImgVisFeat  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Visualizers" href="visualizers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ImgVisFeat
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="visualizers.html">Visualizers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#imgvisfeat.type.ColorChannelResult"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.ColorChannelResult.__init__"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.ColorChannelResult.blue"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.blue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.ColorChannelResult.green"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.green</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.ColorChannelResult.red"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.red</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#imgvisfeat.type.GradientResult"><code class="docutils literal notranslate"><span class="pre">GradientResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.GradientResult.__init__"><code class="docutils literal notranslate"><span class="pre">GradientResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.GradientResult.gradient_x"><code class="docutils literal notranslate"><span class="pre">GradientResult.gradient_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.GradientResult.gradient_xy"><code class="docutils literal notranslate"><span class="pre">GradientResult.gradient_xy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.GradientResult.gradient_y"><code class="docutils literal notranslate"><span class="pre">GradientResult.gradient_y</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#imgvisfeat.type.HogResult"><code class="docutils literal notranslate"><span class="pre">HogResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.HogResult.__init__"><code class="docutils literal notranslate"><span class="pre">HogResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.HogResult.hog"><code class="docutils literal notranslate"><span class="pre">HogResult.hog</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#imgvisfeat.type.KeypointResult"><code class="docutils literal notranslate"><span class="pre">KeypointResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.KeypointResult.__init__"><code class="docutils literal notranslate"><span class="pre">KeypointResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.KeypointResult.keypoint"><code class="docutils literal notranslate"><span class="pre">KeypointResult.keypoint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.KeypointResult.rich_keypoint"><code class="docutils literal notranslate"><span class="pre">KeypointResult.rich_keypoint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#imgvisfeat.type.LBPResult"><code class="docutils literal notranslate"><span class="pre">LBPResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.LBPResult.__init__"><code class="docutils literal notranslate"><span class="pre">LBPResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.LBPResult.lbp"><code class="docutils literal notranslate"><span class="pre">LBPResult.lbp</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#imgvisfeat.type.PowerSpectrumResult"><code class="docutils literal notranslate"><span class="pre">PowerSpectrumResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.PowerSpectrumResult.__init__"><code class="docutils literal notranslate"><span class="pre">PowerSpectrumResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.type.PowerSpectrumResult.power_spectrum"><code class="docutils literal notranslate"><span class="pre">PowerSpectrumResult.power_spectrum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.blue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.green</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">ColorChannelResult.red</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">GradientResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">GradientResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">GradientResult.gradient_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">GradientResult.gradient_xy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">GradientResult.gradient_y</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">PowerSpectrumResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">PowerSpectrumResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">PowerSpectrumResult.power_spectrum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">HogResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">HogResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">HogResult.hog</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">LBPResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">LBPResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">LBPResult.lbp</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">KeypointResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">KeypointResult.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">KeypointResult.keypoint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">KeypointResult.rich_keypoint</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ImgVisFeat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">Data Classes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/data_classes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-classes">
+<h1>Data Classes<a class="headerlink" href="#data-classes" title="Link to this heading"></a></h1>
+<p>This section covers the data classes used to represent visualization results.</p>
+<dl class="py class" id="module-imgvisfeat.type">
+<dt class="sig sig-object py" id="imgvisfeat.type.ColorChannelResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">ColorChannelResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#ColorChannelResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.type.ColorChannelResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">VisualizationResult</span></code></p>
+<p>A dataclass for storing color channel results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.type.ColorChannelResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">red</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imgvisfeat.type.ColorChannelResult.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blue</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>green</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>red</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.ColorChannelResult.blue">
+<span class="sig-name descname"><span class="pre">blue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.ColorChannelResult.blue" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.ColorChannelResult.green">
+<span class="sig-name descname"><span class="pre">green</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.ColorChannelResult.green" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.ColorChannelResult.red">
+<span class="sig-name descname"><span class="pre">red</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.ColorChannelResult.red" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.type.GradientResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">GradientResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#GradientResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.type.GradientResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">VisualizationResult</span></code></p>
+<p>A dataclass for storing gradient results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.type.GradientResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradient_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_xy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imgvisfeat.type.GradientResult.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gradient_x</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gradient_y</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gradient_xy</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.GradientResult.gradient_x">
+<span class="sig-name descname"><span class="pre">gradient_x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.GradientResult.gradient_x" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.GradientResult.gradient_xy">
+<span class="sig-name descname"><span class="pre">gradient_xy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.GradientResult.gradient_xy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.GradientResult.gradient_y">
+<span class="sig-name descname"><span class="pre">gradient_y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.GradientResult.gradient_y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.type.HogResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">HogResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#HogResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.type.HogResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">VisualizationResult</span></code></p>
+<p>A dataclass for storing Histogram of Oriented Gradient results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.type.HogResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hog</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imgvisfeat.type.HogResult.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hog</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.HogResult.hog">
+<span class="sig-name descname"><span class="pre">hog</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.HogResult.hog" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.type.KeypointResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">KeypointResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#KeypointResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.type.KeypointResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">VisualizationResult</span></code></p>
+<p>A dataclass for storing keypoint results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.type.KeypointResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rich_keypoint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imgvisfeat.type.KeypointResult.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypoint</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>rich_keypoint</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.KeypointResult.keypoint">
+<span class="sig-name descname"><span class="pre">keypoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.KeypointResult.keypoint" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.KeypointResult.rich_keypoint">
+<span class="sig-name descname"><span class="pre">rich_keypoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.KeypointResult.rich_keypoint" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.type.LBPResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">LBPResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#LBPResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.type.LBPResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">VisualizationResult</span></code></p>
+<p>A dataclass for storing Local Binary Pattern results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.type.LBPResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lbp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imgvisfeat.type.LBPResult.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lbp</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.LBPResult.lbp">
+<span class="sig-name descname"><span class="pre">lbp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.LBPResult.lbp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.type.PowerSpectrumResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">PowerSpectrumResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#PowerSpectrumResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.type.PowerSpectrumResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">VisualizationResult</span></code></p>
+<p>A dataclass for storing power spectrum results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.type.PowerSpectrumResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">power_spectrum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imgvisfeat.type.PowerSpectrumResult.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>power_spectrum</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.type.PowerSpectrumResult.power_spectrum">
+<span class="sig-name descname"><span class="pre">power_spectrum</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#imgvisfeat.type.PowerSpectrumResult.power_spectrum" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">ColorChannelResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#ColorChannelResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>A dataclass for storing color channel results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">red</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blue</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>green</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>red</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">blue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">green</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">red</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id5">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">GradientResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#GradientResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd><p>A dataclass for storing gradient results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradient_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_xy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gradient_x</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gradient_y</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>gradient_xy</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">gradient_x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">gradient_xy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">gradient_y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">PowerSpectrumResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#PowerSpectrumResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dd><p>A dataclass for storing power spectrum results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">power_spectrum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>power_spectrum</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">power_spectrum</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">HogResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#HogResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<dd><p>A dataclass for storing Histogram of Oriented Gradient results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hog</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hog</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">hog</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id16">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">LBPResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#LBPResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
+<dd><p>A dataclass for storing Local Binary Pattern results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lbp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lbp</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">lbp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id18" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id19">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.type.</span></span><span class="sig-name descname"><span class="pre">KeypointResult</span></span><a class="reference internal" href="../_modules/imgvisfeat/type.html#KeypointResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id19" title="Link to this definition"></a></dt>
+<dd><p>A dataclass for storing keypoint results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id20">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rich_keypoint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypoint</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>rich_keypoint</strong> (<em>ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>, </em><em>dtype</em><em>[</em><em>uint8</em><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id21">
+<span class="sig-name descname"><span class="pre">keypoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id21" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id22">
+<span class="sig-name descname"><span class="pre">rich_keypoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id22" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="visualizers.html" class="btn btn-neutral float-left" title="Visualizers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, chatflip.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualizers &mdash; ImgVisFeat  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Classes" href="data_classes.html" />
+    <link rel="prev" title="API Reference" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ImgVisFeat
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Visualizers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-imgvisfeat.Visualizer">Base Visualizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.Visualizer.Visualizer"><code class="docutils literal notranslate"><span class="pre">Visualizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-imgvisfeat.ColorChannelVisualizer">Color Channel Visualizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.ColorChannelVisualizer.ColorChannelVisualizer"><code class="docutils literal notranslate"><span class="pre">ColorChannelVisualizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#gradient-visualizers">Gradient Visualizers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.ColorGradientVisualizer"><code class="docutils literal notranslate"><span class="pre">ColorGradientVisualizer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.GrayGradientVisualizer"><code class="docutils literal notranslate"><span class="pre">GrayGradientVisualizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-imgvisfeat.HoGVisualizer">HoG Visualizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.HoGVisualizer.HoGVisualizer"><code class="docutils literal notranslate"><span class="pre">HoGVisualizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-imgvisfeat.KeypointVisualizer">Keypoint Visualizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.KeypointVisualizer.KeypointVisualizer"><code class="docutils literal notranslate"><span class="pre">KeypointVisualizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-imgvisfeat.LBPVisualizer">LBP Visualizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.LBPVisualizer.LBPVisualizer"><code class="docutils literal notranslate"><span class="pre">LBPVisualizer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-imgvisfeat.PowerSpectrumVisualizer">Power Spectrum Visualizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.PowerSpectrumVisualizer.PowerSpectrumVisualizer"><code class="docutils literal notranslate"><span class="pre">PowerSpectrumVisualizer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_classes.html">Data Classes</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ImgVisFeat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">Visualizers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/visualizers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="visualizers">
+<h1>Visualizers<a class="headerlink" href="#visualizers" title="Link to this heading"></a></h1>
+<p>This section covers all the visualizer classes provided by ImgVisFeat.</p>
+<section id="module-imgvisfeat.Visualizer">
+<span id="base-visualizer"></span><h2>Base Visualizer<a class="headerlink" href="#module-imgvisfeat.Visualizer" title="Link to this heading"></a></h2>
+<p>Module for image visualization in the ImgVisFeat package.</p>
+<p>This module contains the Visualizer class, which provides functionality
+for loading, processing, and displaying or saving visualized images.
+It supports various visualization parameters and options to enhance
+image representation for analysis and presentation purposes.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><p>Visualizer: Main class for image visualization operations.</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.Visualizer.</span></span><span class="sig-name descname"><span class="pre">Visualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/Visualizer.html#Visualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class for visualizing images.</p>
+<p>This class provides functionality to visualize images, with options
+to display them on screen or save them to a specified directory.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer.params">
+<span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.params" title="Link to this definition"></a></dt>
+<dd><p>Additional parameters for visualization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vis</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vis</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="s1">&#39;path/to/image.jpg&#39;</span><span class="p">,</span> <span class="n">dst_root</span><span class="o">=</span><span class="s1">&#39;output_folder&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/Visualizer.html#Visualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the Visualizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – Additional parameters for visualization.
+These can include color maps, scaling factors, etc.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer.check_image_assertions">
+<span class="sig-name descname"><span class="pre">check_image_assertions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_image_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/Visualizer.html#Visualizer.check_image_assertions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.check_image_assertions" title="Link to this definition"></a></dt>
+<dd><p>Check if the image path is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>src_image_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to the image.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – If the image is not found.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – If the image path is not a file.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – If the image path is not a image.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_image_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/Visualizer.html#Visualizer.visualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.visualize" title="Link to this definition"></a></dt>
+<dd><p>Visualize the image.</p>
+<p>This method loads an image from the given path, applies any
+visualization parameters, and either displays the image or
+saves it to the specified destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>src_image_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to the source image file.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – If the src_image_path is invalid or the image
+    cannot be loaded.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">visualizer</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">visualizer</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="s1">&#39;input.jpg&#39;</span><span class="p">,</span> <span class="n">dst_root</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imgvisfeat.ColorChannelVisualizer">
+<span id="color-channel-visualizer"></span><h2>Color Channel Visualizer<a class="headerlink" href="#module-imgvisfeat.ColorChannelVisualizer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.ColorChannelVisualizer.ColorChannelVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.ColorChannelVisualizer.</span></span><span class="sig-name descname"><span class="pre">ColorChannelVisualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/ColorChannelVisualizer.html#ColorChannelVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.ColorChannelVisualizer.ColorChannelVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVisualizer</span></code></p>
+<p>A class for splitting the color channels of an image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.ColorChannelVisualizer.ColorChannelVisualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/ColorChannelVisualizer.html#ColorChannelVisualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.ColorChannelVisualizer.ColorChannelVisualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the ColorChannelVisualizer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="gradient-visualizers">
+<h2>Gradient Visualizers<a class="headerlink" href="#gradient-visualizers" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.ColorGradientVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.</span></span><span class="sig-name descname"><span class="pre">ColorGradientVisualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/GradientVisualizer.html#ColorGradientVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.ColorGradientVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVisualizer</span></code></p>
+<p>A class for computing the gradient of a color image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.ColorGradientVisualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/GradientVisualizer.html#ColorGradientVisualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.ColorGradientVisualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the ColorGradientVisualizer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.GrayGradientVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.</span></span><span class="sig-name descname"><span class="pre">GrayGradientVisualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/GradientVisualizer.html#GrayGradientVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.GrayGradientVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVisualizer</span></code></p>
+<p>A class for computing the gradient of a grayscale image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.GrayGradientVisualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/GradientVisualizer.html#GrayGradientVisualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.GrayGradientVisualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the GrayGradientVisualizer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imgvisfeat.HoGVisualizer">
+<span id="hog-visualizer"></span><h2>HoG Visualizer<a class="headerlink" href="#module-imgvisfeat.HoGVisualizer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.HoGVisualizer.HoGVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.HoGVisualizer.</span></span><span class="sig-name descname"><span class="pre">HoGVisualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/HoGVisualizer.html#HoGVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.HoGVisualizer.HoGVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVisualizer</span></code></p>
+<p>A class for visualizing the HoG features of an image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.HoGVisualizer.HoGVisualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/HoGVisualizer.html#HoGVisualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.HoGVisualizer.HoGVisualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the HoGVisualizer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imgvisfeat.KeypointVisualizer">
+<span id="keypoint-visualizer"></span><h2>Keypoint Visualizer<a class="headerlink" href="#module-imgvisfeat.KeypointVisualizer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.KeypointVisualizer.KeypointVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.KeypointVisualizer.</span></span><span class="sig-name descname"><span class="pre">KeypointVisualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/KeypointVisualizer.html#KeypointVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.KeypointVisualizer.KeypointVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVisualizer</span></code></p>
+<p>A class for visualizing keypoints in an image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.KeypointVisualizer.KeypointVisualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/KeypointVisualizer.html#KeypointVisualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.KeypointVisualizer.KeypointVisualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the KeypointVisualizer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>algorithm_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.KeypointVisualizer.KeypointVisualizer.make_akaze_image">
+<span class="sig-name descname"><span class="pre">make_akaze_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/KeypointVisualizer.html#KeypointVisualizer.make_akaze_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.KeypointVisualizer.KeypointVisualizer.make_akaze_image" title="Link to this definition"></a></dt>
+<dd><p>Create an image with keypoints using the AKAZE algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>NDArray</em><em>[</em><em>np.uint8</em><em>]</em>) – The source image.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The image with keypoints and the image with rich keypoints.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>[NDArray[np.uint8], NDArray[np.uint8]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.KeypointVisualizer.KeypointVisualizer.make_orb_image">
+<span class="sig-name descname"><span class="pre">make_orb_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/KeypointVisualizer.html#KeypointVisualizer.make_orb_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.KeypointVisualizer.KeypointVisualizer.make_orb_image" title="Link to this definition"></a></dt>
+<dd><p>Create an image with keypoints using the ORB algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>NDArray</em><em>[</em><em>np.uint8</em><em>]</em>) – The source image.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The image with keypoints and the image with rich keypoints.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>[NDArray[np.uint8], NDArray[np.uint8]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.KeypointVisualizer.KeypointVisualizer.make_sift_image">
+<span class="sig-name descname"><span class="pre">make_sift_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/KeypointVisualizer.html#KeypointVisualizer.make_sift_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.KeypointVisualizer.KeypointVisualizer.make_sift_image" title="Link to this definition"></a></dt>
+<dd><p>Create an image with keypoints using the SIFT algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>NDArray</em><em>[</em><em>np.uint8</em><em>]</em>) – The source image.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The image with keypoints and the image with rich keypoints.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>[NDArray[np.uint8], NDArray[np.uint8]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imgvisfeat.LBPVisualizer">
+<span id="lbp-visualizer"></span><h2>LBP Visualizer<a class="headerlink" href="#module-imgvisfeat.LBPVisualizer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.LBPVisualizer.LBPVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.LBPVisualizer.</span></span><span class="sig-name descname"><span class="pre">LBPVisualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/LBPVisualizer.html#LBPVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.LBPVisualizer.LBPVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVisualizer</span></code></p>
+<p>A class for computing the Local Binary Pattern (LBP) of an image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.LBPVisualizer.LBPVisualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/LBPVisualizer.html#LBPVisualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.LBPVisualizer.LBPVisualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the LBPVisualizer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imgvisfeat.PowerSpectrumVisualizer">
+<span id="power-spectrum-visualizer"></span><h2>Power Spectrum Visualizer<a class="headerlink" href="#module-imgvisfeat.PowerSpectrumVisualizer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="imgvisfeat.PowerSpectrumVisualizer.PowerSpectrumVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.PowerSpectrumVisualizer.</span></span><span class="sig-name descname"><span class="pre">PowerSpectrumVisualizer</span></span><a class="reference internal" href="../_modules/imgvisfeat/PowerSpectrumVisualizer.html#PowerSpectrumVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.PowerSpectrumVisualizer.PowerSpectrumVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVisualizer</span></code></p>
+<p>A class for computing the power spectrum of an image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imgvisfeat.PowerSpectrumVisualizer.PowerSpectrumVisualizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/imgvisfeat/PowerSpectrumVisualizer.html#PowerSpectrumVisualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.PowerSpectrumVisualizer.PowerSpectrumVisualizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the PowerSpectrumVisualizer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_classes.html" class="btn btn-neutral float-right" title="Data Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, chatflip.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
