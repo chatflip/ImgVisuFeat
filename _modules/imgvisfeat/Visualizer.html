@@ -71,35 +71,144 @@
            <div itemprop="articleBody">
              
   <h1>Source code for imgvisfeat.Visualizer</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="sd">&quot;&quot;&quot;Module for image visualization in the ImgVisFeat package.</span>
+
+<span class="sd">This module contains the Visualizer class, which provides functionality</span>
+<span class="sd">for loading, processing, and displaying or saving visualized images.</span>
+<span class="sd">It supports various visualization parameters and options to enhance</span>
+<span class="sd">image representation for analysis and presentation purposes.</span>
+
+<span class="sd">Classes:</span>
+<span class="sd">    Visualizer: Main class for image visualization operations.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">cv2</span>
 
+<span class="kn">from</span> <span class="nn">.ColorChannelVisualizer</span> <span class="kn">import</span> <span class="n">ColorChannelVisualizer</span>
+<span class="kn">from</span> <span class="nn">.ColorGradientVisualizer</span> <span class="kn">import</span> <span class="n">ColorGradientVisualizer</span>
+<span class="kn">from</span> <span class="nn">.GrayGradientVisualizer</span> <span class="kn">import</span> <span class="n">GrayGradientVisualizer</span>
+<span class="kn">from</span> <span class="nn">.HoGVisualizer</span> <span class="kn">import</span> <span class="n">HoGVisualizer</span>
+<span class="kn">from</span> <span class="nn">.KeypointVisualizer</span> <span class="kn">import</span> <span class="n">KeypointVisualizer</span>
+<span class="kn">from</span> <span class="nn">.LBPVisualizer</span> <span class="kn">import</span> <span class="n">LBPVisualizer</span>
+<span class="kn">from</span> <span class="nn">.PowerSpectrumVisualizer</span> <span class="kn">import</span> <span class="n">PowerSpectrumVisualizer</span>
+
 
 <div class="viewcode-block" id="Visualizer">
 <a class="viewcode-back" href="../../api.html#imgvisfeat.Visualizer.Visualizer">[docs]</a>
 <span class="k">class</span> <span class="nc">Visualizer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for visualizing images.</span>
+
+<span class="sd">    This class provides functionality to visualize images, with options</span>
+<span class="sd">    to display them on screen or save them to a specified directory.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        params (dict): Additional parameters for visualization.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; vis = Visualizer()</span>
+<span class="sd">        &gt;&gt;&gt; vis.visualize(&#39;path/to/image.jpg&#39;, dst_root=&#39;output_folder&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="Visualizer.__init__">
 <a class="viewcode-back" href="../../api.html#imgvisfeat.Visualizer.Visualizer.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span></div>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the Visualizer.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **params: Additional parameters for visualization.</span>
+<span class="sd">                These can include color maps, scaling factors, etc.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color_channel_visualizer</span> <span class="o">=</span> <span class="n">ColorChannelVisualizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hog_visualizer</span> <span class="o">=</span> <span class="n">HoGVisualizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power_spectrum_visualizer</span> <span class="o">=</span> <span class="n">PowerSpectrumVisualizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sift_visualizer</span> <span class="o">=</span> <span class="n">KeypointVisualizer</span><span class="p">(</span><span class="s2">&quot;SIFT&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">akaze_visualizer</span> <span class="o">=</span> <span class="n">KeypointVisualizer</span><span class="p">(</span><span class="s2">&quot;AKAZE&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">orb_visualizer</span> <span class="o">=</span> <span class="n">KeypointVisualizer</span><span class="p">(</span><span class="s2">&quot;ORB&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color_gradient_visualizer</span> <span class="o">=</span> <span class="n">ColorGradientVisualizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gray_gradient_visualizer</span> <span class="o">=</span> <span class="n">GrayGradientVisualizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lbp_visualizer</span> <span class="o">=</span> <span class="n">LBPVisualizer</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Visualizer.visualize">
 <a class="viewcode-back" href="../../api.html#imgvisfeat.Visualizer.Visualizer.visualize">[docs]</a>
-    <span class="k">def</span> <span class="nf">visualize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">visualize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Visualize the image.</span>
+
+<span class="sd">        This method loads an image from the given path, applies any</span>
+<span class="sd">        visualization parameters, and either displays the image or</span>
+<span class="sd">        saves it to the specified destination.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            src_image_path (str): Path to the source image file.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the src_image_path is invalid or the image</span>
+<span class="sd">                        cannot be loaded.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; visualizer = Visualizer()</span>
+<span class="sd">            &gt;&gt;&gt; visualizer.visualize(&#39;input.jpg&#39;, dst_root=&#39;output&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_image_assertions</span><span class="p">(</span><span class="n">src_image_path</span><span class="p">)</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">src_image_path</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">dst_root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
-            <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dst_root</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">dst_image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dst_root</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">src_image_path</span><span class="p">))</span>
-            <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_image_path</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span></div>
+        <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">src_image_path</span><span class="p">))</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">src_image_path</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
+        <span class="n">color_channel_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color_channel_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">gradient_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color_gradient_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">gray_gradient_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gray_gradient_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">hog_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hog_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">power_spectrum_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">power_spectrum_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">sift_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sift_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">akaze_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">akaze_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">orb_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orb_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">lbp_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lbp_visualizer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">dst_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;original&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;channel_blue&quot;</span><span class="p">,</span> <span class="n">color_channel_result</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;channel_green&quot;</span><span class="p">,</span> <span class="n">color_channel_result</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;channel_red&quot;</span><span class="p">,</span> <span class="n">color_channel_result</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;color_gradient_x&quot;</span><span class="p">,</span> <span class="n">gradient_result</span><span class="o">.</span><span class="n">gradient_x</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;color_gradient_y&quot;</span><span class="p">,</span> <span class="n">gradient_result</span><span class="o">.</span><span class="n">gradient_y</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;color_gradient_xy&quot;</span><span class="p">,</span> <span class="n">gradient_result</span><span class="o">.</span><span class="n">gradient_xy</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;gray_gradient_x&quot;</span><span class="p">,</span> <span class="n">gray_gradient_result</span><span class="o">.</span><span class="n">gradient_x</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;gray_gradient_y&quot;</span><span class="p">,</span> <span class="n">gray_gradient_result</span><span class="o">.</span><span class="n">gradient_y</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;gray_gradient_xy&quot;</span><span class="p">,</span> <span class="n">gray_gradient_result</span><span class="o">.</span><span class="n">gradient_xy</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;hog&quot;</span><span class="p">,</span> <span class="n">hog_result</span><span class="o">.</span><span class="n">hog</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;power_spectrum&quot;</span><span class="p">,</span> <span class="n">power_spectrum_result</span><span class="o">.</span><span class="n">power_spectrum</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;keypoint_sift_position&quot;</span><span class="p">,</span> <span class="n">sift_result</span><span class="o">.</span><span class="n">keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;keypoint_sift_rich&quot;</span><span class="p">,</span> <span class="n">sift_result</span><span class="o">.</span><span class="n">rich_keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;keypoint_akaze_position&quot;</span><span class="p">,</span> <span class="n">akaze_result</span><span class="o">.</span><span class="n">keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;keypoint_akaze_rich&quot;</span><span class="p">,</span> <span class="n">akaze_result</span><span class="o">.</span><span class="n">rich_keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;keypoint_orb_position&quot;</span><span class="p">,</span> <span class="n">orb_result</span><span class="o">.</span><span class="n">keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;keypoint_orb_rich&quot;</span><span class="p">,</span> <span class="n">orb_result</span><span class="o">.</span><span class="n">rich_keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">dst_path</span> <span class="o">%</span> <span class="s2">&quot;lbp&quot;</span><span class="p">,</span> <span class="n">lbp_result</span><span class="o">.</span><span class="n">lbp</span><span class="p">)</span>
+
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Original&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Blue Channel&quot;</span><span class="p">,</span> <span class="n">color_channel_result</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Green Channel&quot;</span><span class="p">,</span> <span class="n">color_channel_result</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Red Channel&quot;</span><span class="p">,</span> <span class="n">color_channel_result</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Color Gradient X&quot;</span><span class="p">,</span> <span class="n">gradient_result</span><span class="o">.</span><span class="n">gradient_x</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Color Gradient Y&quot;</span><span class="p">,</span> <span class="n">gradient_result</span><span class="o">.</span><span class="n">gradient_y</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Color Gradient X and Y&quot;</span><span class="p">,</span> <span class="n">gradient_result</span><span class="o">.</span><span class="n">gradient_xy</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Gray Gradient X&quot;</span><span class="p">,</span> <span class="n">gray_gradient_result</span><span class="o">.</span><span class="n">gradient_x</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Gray Gradient Y&quot;</span><span class="p">,</span> <span class="n">gray_gradient_result</span><span class="o">.</span><span class="n">gradient_y</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Gray Gradient X and Y&quot;</span><span class="p">,</span> <span class="n">gray_gradient_result</span><span class="o">.</span><span class="n">gradient_xy</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;HoG&quot;</span><span class="p">,</span> <span class="n">hog_result</span><span class="o">.</span><span class="n">hog</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Power Spectrum&quot;</span><span class="p">,</span> <span class="n">power_spectrum_result</span><span class="o">.</span><span class="n">power_spectrum</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;SIFT keypoint&quot;</span><span class="p">,</span> <span class="n">sift_result</span><span class="o">.</span><span class="n">keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;SIFT rich keypoint&quot;</span><span class="p">,</span> <span class="n">sift_result</span><span class="o">.</span><span class="n">rich_keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;AKAZE keypoint&quot;</span><span class="p">,</span> <span class="n">akaze_result</span><span class="o">.</span><span class="n">keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;AKAZE rich keypoint&quot;</span><span class="p">,</span> <span class="n">akaze_result</span><span class="o">.</span><span class="n">rich_keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;ORB keypoint&quot;</span><span class="p">,</span> <span class="n">orb_result</span><span class="o">.</span><span class="n">keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;ORB rich keypoint&quot;</span><span class="p">,</span> <span class="n">orb_result</span><span class="o">.</span><span class="n">rich_keypoint</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;LBP&quot;</span><span class="p">,</span> <span class="n">lbp_result</span><span class="o">.</span><span class="n">lbp</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Visualizer.check_image_assertions">

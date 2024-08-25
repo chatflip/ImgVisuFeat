@@ -48,6 +48,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-imgvisfeat.Visualizer">imgvisfeat.visualization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#imgvisfeat.Visualizer.Visualizer"><code class="docutils literal notranslate"><span class="pre">Visualizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.Visualizer.Visualizer.params"><code class="docutils literal notranslate"><span class="pre">Visualizer.params</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.Visualizer.Visualizer.__init__"><code class="docutils literal notranslate"><span class="pre">Visualizer.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.Visualizer.Visualizer.check_image_assertions"><code class="docutils literal notranslate"><span class="pre">Visualizer.check_image_assertions()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#imgvisfeat.Visualizer.Visualizer.visualize"><code class="docutils literal notranslate"><span class="pre">Visualizer.visualize()</span></code></a></li>
@@ -88,16 +89,46 @@
 <p>This part of the documentation covers all the interfaces of ImgVisFeat.</p>
 <section id="module-imgvisfeat.Visualizer">
 <span id="imgvisfeat-visualization"></span><h2>imgvisfeat.visualization<a class="headerlink" href="#module-imgvisfeat.Visualizer" title="Link to this heading"></a></h2>
+<p>Module for image visualization in the ImgVisFeat package.</p>
+<p>This module contains the Visualizer class, which provides functionality
+for loading, processing, and displaying or saving visualized images.
+It supports various visualization parameters and options to enhance
+image representation for analysis and presentation purposes.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><p>Visualizer: Main class for image visualization operations.</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imgvisfeat.Visualizer.</span></span><span class="sig-name descname"><span class="pre">Visualizer</span></span><a class="reference internal" href="_modules/imgvisfeat/Visualizer.html#Visualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class for visualizing images.</p>
+<p>This class provides functionality to visualize images, with options
+to display them on screen or save them to a specified directory.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer.params">
+<span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.params" title="Link to this definition"></a></dt>
+<dd><p>Additional parameters for visualization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vis</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vis</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="s1">&#39;path/to/image.jpg&#39;</span><span class="p">,</span> <span class="n">dst_root</span><span class="o">=</span><span class="s1">&#39;output_folder&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/imgvisfeat/Visualizer.html#Visualizer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.__init__" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Initialize the Visualizer.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>)</p>
+<dd class="field-odd"><p><strong>**params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – Additional parameters for visualization.
+These can include color maps, scaling factors, etc.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -128,18 +159,28 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imgvisfeat.Visualizer.Visualizer.visualize">
-<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_image_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/imgvisfeat/Visualizer.html#Visualizer.visualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.visualize" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_image_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/imgvisfeat/Visualizer.html#Visualizer.visualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imgvisfeat.Visualizer.Visualizer.visualize" title="Link to this definition"></a></dt>
+<dd><p>Visualize the image.</p>
+<p>This method loads an image from the given path, applies any
+visualization parameters, and either displays the image or
+saves it to the specified destination.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>src_image_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p></li>
-<li><p><strong>dst_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
-</ul>
+<dd class="field-odd"><p><strong>src_image_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Path to the source image file.</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – If the src_image_path is invalid or the image
+    cannot be loaded.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">visualizer</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">visualizer</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="s1">&#39;input.jpg&#39;</span><span class="p">,</span> <span class="n">dst_root</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
